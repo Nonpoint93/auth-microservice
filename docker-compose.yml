@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  auth-microservice:
+    image: nonpoint93/auth-microservice:latest
+    container_name: auth-microservice
+    ports:
+      - "8081:8081"
+    networks:
+      - auth-network
+    depends_on:
+      - auth-vivelibre
+
+  auth-vivelibre:
+    image: skeet15/auth-vivelibre
+    container_name: auth-vivelibre
+    ports:
+      - "8080:8080"
+    networks:
+      - auth-network
+
+networks:
+  auth-network:
